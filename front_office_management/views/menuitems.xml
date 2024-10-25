@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+            id="root_menu_front_office"
+            name="Front Office"
+            sequence="0"
+            groups="base.group_user"/>
+
+    <menuitem
+            id="menu_visitor_management"
+            name="Visitor Management"
+            parent="root_menu_front_office"
+            sequence="1"
+            groups="base.group_user"/>
+
+    <menuitem
+            id="menu_visitors"
+            name="Visitors"
+            parent="menu_visitor_management"
+            action="action_front_office_management"
+            sequence="2"
+            groups="base.group_user"/>
+
+    <menuitem
+            id="menu_visits_insights"
+            name="Visits"
+            parent="menu_visitor_management"
+            action="action_visit_insight"
+            sequence="3"
+            groups="base.group_user"/>
+</odoo>
+

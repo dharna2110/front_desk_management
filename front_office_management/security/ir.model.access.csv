@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+front_office_management.access_visitor_management,access_visitor_management,front_office_management.model_visitor_management,base.group_user,1,1,1,1
+front_office_management.access_visit_insight,access_visit_insight,front_office_management.model_visit_insight,base.group_user,1,1,1,1
