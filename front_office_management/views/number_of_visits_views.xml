@@ -28,13 +28,22 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
-                    <header>
-                           <button class="oe_stat_button" name="%(action_visit_insight)d" type="action"
-                                   options="{'clickable': '1'}" context="{'default_visitor_id': active_id}">
-                               <field name="visitor_count"  widget="statinfo" string="Visits"/>
-                            </button>
-                    </header>
-<!--action_visit_insight-->
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" name="%(action_visit_insight)d" type="action" icon="fa-arrows-v">
+                            <div class="o_stat_info">
+                                <field name="visitor_count" class="o_stat_value"/>
+                                <span class="o_stat_text">Visits</span>
+                            </div>
+
+                        </button>
+                    </div>
+
+                    <!--                        <button class="oe_stat_button" name="%(action_visit_insight)d" type="action"-->
+                    <!--                                options="{'clickable': '1'}"-->
+                    <!--                                context="{'default_visitor_id': [active_id],'search_default_visitor_id': [active_id]}">-->
+                    <!--                            <field name="visitor_count" widget="statinfo" string="Visits"/>-->
+                    <!--                        </button>-->
+
                     <group>
                         <group>
                             <field name="visitor_name"/>

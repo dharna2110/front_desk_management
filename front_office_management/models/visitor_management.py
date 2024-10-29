@@ -20,7 +20,7 @@ class Visitor_Management(models.Model):
     visitor_count = fields.Integer(string="Visits", compute='compute_visitor_count')
 
     def compute_visitor_count(self):
-        visitor_count = self.env['visitor.management'].search_count([('visitor_id', '=', self.visitor_id)])
+        visitor_count = self.env['visit.insight'].search_count([('visitor_id', '=', self.visitor_id)])
         self.visitor_count = visitor_count
 
     # def visitor_view(self):

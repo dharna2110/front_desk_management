@@ -8,6 +8,7 @@
     'description': 'Manage Visitors: Oversee guest arrivals and departures, Keep Check-In, Check-Out. Details of Visitors: Maintain records of visitor entries and exits. '
                    'Issue Visitor Pass: Provide identification passes for access. Manage Visitor Belongings: Secure and track items brought by guests. '
                    'Manage Employee Belongings: Monitor and store personal items of staff. Print Property Label: Create and print labels for tracking property items.',
+    'depends': ['hr'],
     'data': [
         'security/ir.model.access.csv',
         'views/visits_insight_view.xml',

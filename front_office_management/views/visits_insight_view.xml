@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-     <!--    tree-->
+    <!--    tree-->
     <record id="visit_insight_tree" model="ir.ui.view">
         <field name="name">visit.insight.tree</field>
         <field name="model">visit.insight</field>
@@ -14,36 +14,48 @@
                 <field name="meeting_with" string="Employee Name"/>
                 <field name="department" string="Department"/>
                 <field name="purpose_of_visit" string="Purpose"/>
+                <field name="state" string="Status"/>
 
             </tree>
         </field>
     </record>
 
-<!--    form-->
+    <!--    form-->
     <record id="visit_insight_form" model="ir.ui.view">
         <field name="name">visit.insight.form</field>
         <field name="model">visit.insight</field>
         <field name="arch" type="xml">
             <form>
+
                 <header>
-                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,cancelled" options="{'clickable': '1'}"/>
+                    <!--                    <button name="action_confirm_visit" string="Confirm Visit" type="object" class="oe_highlight"-->
+                    <!--                            invisible="not (check_in_datetime and check_out_datetime)"/>-->
+                    <button name="action_cancel" string="Cancel" type="object" class="oe_highlight"
+                            invisible="not (check_in_datetime or check_out_datetime)"/>
+                    <button name="action_draft" string="Draft" type="object" class="oe_highlight"
+                            invisible="not (check_in_datetime or check_out_datetime)"/>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirm,cancelled"/>
                 </header>
+
                 <sheet>
 
                     <group>
                         <group>
                             <field name="visitor_id"/>
                             <field name="visitor_name"/>
-                            <field name="phone_no" />
+                            <field name="phone_no"/>
                             <field name="mail_id"/>
 
                         </group>
                         <group string="CheckIn/CheckOut Details">
-                            <field name="check_in_datetime"/>
-                            <field name="check_out_datetime"/>
+                            <field name="check_in_datetime" required="1"/>
+                            <field name="check_out_datetime" required="1"/>
+                            <field name="duration"/>
                         </group>
                         <group string="Purpose Of Visit">
-                            <field name="meeting_with"/>
+                            <field name="employee_id"/>
+                            <field name="employee_contact"/>
+                            <field name="mail_id"/>
                             <field name="department"/>
                             <field name="purpose_of_visit"/>
                         </group>
@@ -51,7 +63,10 @@
                     <notebook>
                         <page string="Personal Belongings">
                             <group>
-
+                                <field name="property_sr_no"/>
+                                <field name="property"/>
+                                <field name="property_count"/>
+                                <field name="permission"/>
                             </group>
                         </page>
                     </notebook>
@@ -63,7 +78,7 @@
 
     <!--    Action-->
     <record id="action_visit_insight" model="ir.actions.act_window">
-<!--        <field name="name">Visits</field>-->
+        <!--        <field name="name">Visits</field>-->
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">visit.insight</field>
         <field name="view_mode">tree,form</field>
